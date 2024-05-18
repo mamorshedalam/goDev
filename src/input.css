@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  .sl-container {
+    @apply max-w-[1380px] w-full px-3 mx-auto;
+  }
   .sl-animation {
     @apply transition-all duration-300 ease-out;
   }
@@ -12,8 +15,16 @@
 }
 
 @layer base {
+  body {
+    @apply bg-black text-white sm:text-lg text-base;
+  }
+
   section {
     @apply relative;
+  }
+
+  em{
+    @apply text-green-100;
   }
 
   a,
@@ -22,7 +33,7 @@
   }
 
   img {
-    @apply w-full;
+    @apply w-full align-middle;
   }
 
   input,

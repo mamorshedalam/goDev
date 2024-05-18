@@ -16,20 +16,262 @@
      <link rel="stylesheet" href="assets/vendor/wowJS/animate.css">
      <!-- GAGALIN FONTFAMILY -->
      <style>
+          @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap");
           @import url("https://fonts.cdnfonts.com/css/gagalin");
+
+          @font-face {
+               font-family: "MoonTime";
+               src: url("assets/font/FontsFree-Net-MoonTime-Regular-1.ttf") format("truetype");
+          }
      </style>
      <!-- ALPINE JS -->
      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body>
+<body x-data="{sidebar: false}">
+     <!-- HEADER -->
+     <header class="fixed top-0 left-0 w-full bg-cover bg-center bg-no-repeat z-[9999]" style="background-image: url(assets/img/tache.jpg);">
+          <div class="sl-container">
+               <div class="flex flex-wrap items-center justify-between">
+                    <a href="index.html"><img src="assets/img/logo.png" alt="logo" class="md:w-40 sm:w-32 w-28"></a>
+                    <nav :style="sidebar ? 'transform: perspective(300px) rotateX(0deg)' : 'transform: perspective(300px) rotateX(-18deg)'"
+                         :class="sidebar ? 'visible opacity-100' : 'invisible opacity-0  origin-top'"
+                         class="lg:relative absolute top-full left-0 lg:flex items-center text-green-100 lg:backdrop-blur-0 backdrop-blur-sm lg:bg-transparent bg-black/50 lg:w-auto w-full lg:py-0 py-4 sl-animation">
+                         <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">A propos de moi</a>
+                         <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Mes Prestations</a>
+                         <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Tarifs</a>
+                         <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Contact-moi</a>
+                    </nav>
+                    <button @click="sidebar = !sidebar" class="fill-green-100 lg:hidden flex items-center justify-center">
+                         <svg class="sm:h-9 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                              <path
+                                   d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                         </svg>
+                    </button>
+               </div>
+          </div>
+     </header>
+     <!-- HEADER -->
 
+     <!-- HERO -->
+     <section class="wow fadeIn lg:py-40 md:py-32 xs:py-20 py-9">
+          <div class="sl-container">
+               <div class="xl:w-1/2 lg:w-2/3 px-3 sm:mt-24 mt-20">
+                    <span class="sm:text-2xl xs:text-xl text-lg text-green-100 uppercase font-bold">Développeur informatique</span>
+                    <div class="md:mt-8 mt-2 xs:mb-5 mb-3 md:w-56 xs:w-40 w-28 h-0.5 bg-green-100"></div>
+                    <h1 class="md:text-6xl xs:text-5xl text-4xl font-bold xs:leading-[70px] leading-[56px] xs:mb-5 mb-3">Rendons votre <em>pésence</em> en ligne <em>dynamique</em></h1>
+                    <p class="xs:leading-[30px] leading-[21px] md:pr-[25%] sm:pr-[10%] mb-8">Création de site Internet, développement d'outils digitaux et d'applications mobiles, nous accompagnons les
+                         professionnels qui désirent
+                         gagner en <em>visibilité</em>, en <em>productivité</em>, et en <em>efficacité</em>.</p>
+                    <div class="flex flex-wrap items-end">
+                         <a href="" class="text-green-100 bg-white hover:text-white hover:bg-green-100/80 md:py-3 xs:py-2 py-0.5 md:px-8 xs:px-6 px-3 rounded-full capitalize tracking-wider mb-4">Mes
+                              prestations</a>
+                         <span class="font-bitter font-bold sm:px-6 px-2 text-gray-100 mb-4">ou</span>
+                         <a href=""
+                              class="text-green-100 bg-white hover:text-white hover:bg-green-100/80 md:py-3 xs:py-2 py-0.5 md:px-8 xs:px-6 px-3 rounded-full capitalize tracking-wider mb-4">Contact
+                              moi</a>
+                    </div>
+               </div>
+          </div>
+     </section>
+     <!-- HERO -->
+
+     <!-- PROPOSE -->
+     <section
+          class="relative lg:my-24 xs:my-16 my-9 xs:pt-10 pt-8 lg:pb-24 xs:pb-20 pb-12 bg-cover bg-center bg-no-repeat before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black/50 before:z-0"
+          style="background-image: url(assets/img/tache_blanc.jpg);">
+          <div class="relative sl-container z-10">
+               <h2
+                    class="wow fadeIn relative text-center md:text-5xl xs:text-4xl text-3xl xs:pb-5 pb-3 lg:mb-40 md:mb-28 xs:mb-20 mb-14 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 sm:after:w-1/6 after:w-1/3 after:h-0.5 after:bg-green-100">
+                    A propos de
+                    <em class="font-moon md:text-[120px] xs:text-[96px] text-[72px] leading-[30px]">moioi</em>
+               </h2>
+               <div class="flex flex-wrap items-center justify-center xs:gap-6 gap-4">
+                    <div class="wow fadeInLeft xs:w-80 w-60 xs:h-80 h-60 rounded-full bg-green-100 overflow-hidden"></div>
+                    <div class="wow fadeInRight max-w-screen-sm md:text-2xl xs:text-xl text-lg xs:leading-relaxed">
+                         <p>Je m'appelle Hugo et je suis un passionné de d'informatique depuis plus de 10 ans. À travers mon travail, je cherche constamment à repousser les limites de la créativité et
+                              de l'innovation.</p>
+                         <p>J'ai une expérience approfondie dans le développement Web et j'ai travaillé sur de nombreux projets passionnants qui ont eu un impact positif sur mes clients et mes
+                              partenaires.</p>
+                         <p>En dehors de mon travail, j'aime le sport et le gaming. Cela me permet de rester inspiré et créatif dans tout ce que je fais.</p>
+                    </div>
+               </div>
+               <div class="wow fadeInUp lg:mt-20 md:mt-14 xs:mt-10 mt-8 text-center"><a href=""
+                         class="tracking-widest font-semibold py-0.5 px-1.5 text-green-100 rounded-2xl hover:bg-white hover:text-blue-100">Contactez-moi</a>
+               </div>
+          </div>
+     </section>
+     <!-- PROPOSE -->
+
+     <!-- PROJECT -->
+     <section class="mt-12 lg:mb-24 xs:mb-20 mb-12">
+          <div class="sl-container">
+               <h2
+                    class="wow fadeIn relative font-bold text-center md:text-5xl xs:text-4xl text-3xl xs:pb-5 pb-3 mb-10 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 sm:after:w-1/6 after:w-1/3 after:h-0.5 after:bg-green-100">
+                    <em class="font-moon md:text-[80px] xs:text-[68px] text-[52px] leading-[25px]">Projets</em> que j'ai réalisés
+               </h2>
+               <div class="wow fadeInDown swiper projectSlider">
+                    <div class="swiper-wrapper">
+                         <div class="swiper-slide">
+                              <div class="h-80 bg-gray-100 rounded-2xl text-center">Project 01</div>
+                         </div>
+                         <div class="swiper-slide">
+                              <div class="h-80 bg-gray-100 rounded-2xl text-center">Project 02</div>
+                         </div>
+                         <div class="swiper-slide">
+                              <div class="h-80 bg-gray-100 rounded-2xl text-center">Project 03</div>
+                         </div>
+                         <div class="swiper-slide">
+                              <div class="h-80 bg-gray-100 rounded-2xl text-center">Project 04</div>
+                         </div>
+                         <div class="swiper-slide">
+                              <div class="h-80 bg-gray-100 rounded-2xl text-center">Project 05</div>
+                         </div>
+                         <div class="swiper-slide">
+                              <div class="h-80 bg-gray-100 rounded-2xl text-center">Project 06</div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+     <!-- PROJECT -->
+
+     <!-- SERVICES -->
+     <section class="md:py-24 xs:py-20 py-12">
+          <div class="sl-container">
+               <h2
+                    class="wow fadeIn relative text-center md:text-5xl xs:text-4xl text-3xl xs:pb-5 pb-3 mb-3 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 sm:after:w-1/6 after:w-1/3 after:h-0.5 after:bg-green-100">
+                    Mes <em class="font-moon md:text-[88px] xs:text-[64px] text-[52px] leading-[26px]">Prestations</em></h2>
+               <p class="wow fadeInUp font-bitter font-bold md:mb-20 xs:mb-12 mb-9 md:text-2xl xs:text-xl text-lg text-center">Voici ce que nous savons faire de mieux</p>
+               <div class="max-w-screen-lg mx-auto flex flex-wrap items-center">
+                    <div class="wow fadeInLeft md:w-1/2 w-full max-w-lg xs:px-4 xs:mb-9 mb-6 md:mx-0 mx-auto">
+                         <div class="bg-gray-100/25 rounded-2xl text-center pt-7 pb-5 hover:-translate-y-5 sl-animation">
+                              <img src="assets/img/computer.png" alt="computer" class="xs:h-28 h-20 xs:w-28 w-20 mx-auto">
+                              <span>Création de Site</span>
+                              <h3 class="text-green-100 font-bold md:text-3xl xs:text-2xl text-xl my-2">Création Site Vitrine</h3>
+                              <a href="" class="hover:text-blue-100">En savoir plus »</a>
+                         </div>
+                    </div>
+                    <div class="wow fadeInRight md:w-1/2 w-full max-w-lg xs:px-4 xs:mb-9 mb-6 md:mx-0 mx-auto">
+                         <div class="bg-gray-100/25 rounded-2xl text-center pt-7 pb-5 hover:-translate-y-5 sl-animation">
+                              <img src="assets/img/computer.png" alt="computer" class="xs:h-28 h-20 xs:w-28 w-20 mx-auto">
+                              <span>Création de Site</span>
+                              <h3 class="text-green-100 font-bold md:text-3xl xs:text-2xl text-xl my-2">Création Site E-Commerce</h3>
+                              <a href="" class="hover:text-blue-100">En savoir plus »</a>
+                         </div>
+                    </div>
+                    <div class="wow fadeInLeft md:w-1/2 w-full max-w-lg xs:px-4 xs:mb-9 mb-6 md:mx-0 mx-auto">
+                         <div class="bg-gray-100/25 rounded-2xl text-center pt-7 pb-5 hover:-translate-y-5 sl-animation">
+                              <img src="assets/img/computer.png" alt="computer" class="xs:h-28 h-20 xs:w-28 w-20 mx-auto">
+                              <span>Création de Site</span>
+                              <h3 class="text-green-100 font-bold md:text-3xl xs:text-2xl text-xl my-2">Gestion des Réseaux Sociaux</h3>
+                              <a href="" class="hover:text-blue-100">En savoir plus »</a>
+                         </div>
+                    </div>
+                    <div class="wow fadeInRight md:w-1/2 w-full max-w-lg xs:px-4 xs:mb-9 mb-6 md:mx-0 mx-auto">
+                         <div class="bg-gray-100/25 rounded-2xl text-center pt-7 pb-5 hover:-translate-y-5 sl-animation">
+                              <img src="assets/img/computer.png" alt="computer" class="xs:h-28 h-20 xs:w-28 w-20 mx-auto">
+                              <span>Création de Site</span>
+                              <h3 class="text-green-100 font-bold md:text-3xl xs:text-2xl text-xl my-2">Création de Logo</h3>
+                              <a href="" class="hover:text-blue-100">En savoir plus »</a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+     <!-- SERVICES -->
+
+     <!-- BANNER -->
+     <section class="wow fadeIn md:mb-24 xs:mb-20 mb-12">
+          <div class="sl-container">
+               <div class="bg-green-100 rounded-3xl xs:p-5 p-3 text-center">
+                    <h2 class="md:text-xl xs:text-lg text-base font-bold xs:mb-4 mb-2.5">J'ai réussi à te convaince ? N'hésite pas à prendre rendez-vous ! 😜</h2>
+                    <a href="" class="py-0.5 xs:w-44 w-40 rounded-2xl bg-orange-100">Ecris moi</a>
+               </div>
+          </div>
+     </section>
+     <!-- BANNER -->
+
+     <!-- FOOTER -->
+     <footer class="wow fadeInUp md:mt-32 xs:mt-24 mt-14 md:mb-12 sm:mb-12">
+          <div class="sl-container">
+               <div class="flex flex-wrap">
+                    <div class="md:w-1/3 w-full xs:mb-9 mb-6">
+                         <h3 class="font-bitter md:mb-8 xs:mb-4 mb-2.5 text-green-100 xs:text-xl text-lg font-semibold">Nos offres</h3>
+                         <ul>
+                              <li><a href="" class="hover:text-green-100/80 xs:mb-2.5 mb-2">Site Vitrine</a></li>
+                              <li><a href="" class="hover:text-green-100/80 xs:mb-2.5 mb-2">Site Ecommerce</a></li>
+                              <li><a href="" class="hover:text-green-100/80 xs:mb-2.5 mb-2">Gestion des réseaux sociaux</a></li>
+                              <li><a href="" class="hover:text-green-100/80 xs:mb-2.5 mb-2">Création de logo</a></li>
+                         </ul>
+                    </div>
+                    <div class="md:w-1/3 w-full xs:mb-9 mb-6">
+                         <h3 class="font-bitter md:mb-8 xs:mb-4 mb-2.5 text-green-100 xs:text-xl text-lg font-semibold">Help</h3>
+                         <ul>
+                              <li><a href="" class="hover:text-green-100/80 xs:mb-2.5 mb-2">Aide</a></li>
+                              <li><a href="" class="hover:text-green-100/80 xs:mb-2.5 mb-2">Foire au question</a></li>
+                              <li><a href="" class="hover:text-green-100/80 xs:mb-2.5 mb-2">Conditions Génrales</a></li>
+                         </ul>
+                    </div>
+                    <div class="md:w-1/3 w-full xs:mb-9 mb-6">
+                         <h3 class="font-bitter md:mb-8 xs:mb-4 mb-2.5 text-green-100 xs:text-xl text-lg font-semibold">Suivez moi</h3>
+                         <div class="flex flex-wrap items-center gap-4">
+                              <a href="" class="xs:w-11 w-8 xs:h-11 h-8 flex items-center justify-center border-2 border-green-100  rounded-full fill-green-100 hover:bg-green-100 hover:fill-white">
+                                   <svg class="xs:h-6 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                        <path
+                                             d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+                                   </svg>
+                              </a>
+                              <a href="" class="xs:w-11 w-8 xs:h-11 h-8 flex items-center justify-center border-2 border-green-100  rounded-full fill-green-100 hover:bg-green-100 hover:fill-white">
+                                   <svg class="xs:h-6 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path
+                                             d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                                   </svg>
+                              </a>
+                              <a href="" class="xs:w-11 w-8 xs:h-11 h-8 flex items-center justify-center border-2 border-green-100  rounded-full fill-green-100 hover:bg-green-100 hover:fill-white">
+                                   <svg class="xs:h-6 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path
+                                             d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+                                   </svg>
+                              </a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </footer>
+     <!-- FOOTER -->
 
      <!-- SCRIPT LINKS -->
      <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
      <!-- ANIMATION -->
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="assets/vendor/jquery/jquery-3.6.0.js"></script>
      <script src="assets/vendor/wowJS/wow.min.js"></script>
+     <script>
+          // WOW JS ANIMATION ADDED
+          new WOW().init();
+
+          // SWIPER
+          var swiper = new Swiper(".projectSlider", {
+               slidesPerView: 1,
+               autoplay: true,
+               autoplaySpeed: 1500,
+               loop: true,
+               breakpoints: {
+                    560: {
+                         spaceBetween: 15,
+                         slidesPerView: 2
+                    },
+                    920: {
+                         spaceBetween: 25,
+                         slidesPerView: 3
+                    },
+                    1200: {
+                         spaceBetween: 50,
+                         slidesPerView: 4
+                    },
+               },
+          });
+     </script>
 </body>
 
 </html>
