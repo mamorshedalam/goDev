@@ -28,19 +28,56 @@
      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body x-data="{sidebar: false}">
+<body x-data="{sidebar: false, contact: false}">
+     <!-- CONTACT FORM -->
+     <section :class="contact ? 'opacity-100 visible h-dvh' : 'opacity-0 invisible h-0'" class="fixed inset-0 w-dvw bg-black/65 backdrop-blur-sm z-[999] overflow-y-scroll sl-animation" x-cloak>
+          <div @click="contact = !contact" class="absolute inset-0 z-0"></div>
+          <div :class="contact ? 'opacity-100 visible' : 'opacity-0 invisible'" class="relative bg-white text-black lg:my-[15%] my-[10%] mx-auto w-4/5 md:p-10 p-5 border border-ash-100 shadow-lg rounded-md z-10 sl-animation-fade">
+               <h3 class="text-green-100 font-bitter font-bold lg:text-3xl sm:text-2xl text-xl">Appeler moi au 0629427275</h3>
+               <p class="sm:text-base text-sm">ou remplissez le formulaire </p>
+               <div class="flex flex-wrap">
+                    <form class="md:w-1/2 w-full">
+                         <div class="md:mb-5 mb-3">
+                              <label for="name">Nom :</label>
+                              <input id="name" type="text" class="w-full md:p-2.5 p-1.5 border border-ash-100/50 rounded-md mt-2">
+                         </div>
+                         <div class="md:mb-5 mb-3">
+                              <label for="email">Email :</label>
+                              <input id="email" type="email" class="w-full md:p-2.5 p-1.5 border border-ash-100/50 rounded-md mt-2">
+                         </div>
+                         <div class="md:mb-5 mb-3">
+                              <label for="subject">Sujet :</label>
+                              <select id="subject" class="w-full md:p-2.5 p-1.5 border border-ash-100/50 rounded-md mt-2">
+                                   <option value="question">Question</option>
+                                   <option value="feedback">Feedback</option>
+                                   <option value="support">Support</option>
+                                   <option value="other">Autre</option>
+                              </select>
+                         </div>
+                         <div class="md:mb-5 mb-3">
+                              <label for="message">Message :</label>
+                              <textarea id="message" class="w-full md:p-2.5 p-1.5 border border-ash-100/50 rounded-md mt-2"> </textarea>
+                         </div>
+                         <button type="submit" class="bg-green-100 rounded md:py-3 py-2 md:px-5 px-3">Envoyer</button>
+                    </form>
+                    <div class="w-1/2 md:flex hidden items-center justify-center"><img src="assets/img/contact-2.png" alt="contact"></div>
+               </div>
+          </div>
+     </section>
+     <!-- CONTACT FORM -->
+
      <!-- HEADER -->
-     <header class="fixed top-0 left-0 w-full bg-cover bg-center bg-no-repeat z-[9999]" style="background-image: url(assets/img/tache.jpg);">
+     <header class="fixed top-0 left-0 w-full backdrop-blur-sm bg-blue-100/15 z-[99]">
           <div class="sl-container">
                <div class="flex flex-wrap items-center justify-between">
                     <a href="index.html"><img src="assets/img/logo.png" alt="logo" class="md:w-40 sm:w-32 w-28"></a>
-                    <nav :style="sidebar ? 'transform: perspective(300px) rotateX(0deg)' : 'transform: perspective(300px) rotateX(-18deg)'"
-                         :class="sidebar ? 'visible opacity-100' : 'invisible opacity-0  origin-top'"
-                         class="lg:relative absolute top-full left-0 lg:flex items-center text-green-100 lg:backdrop-blur-0 backdrop-blur-sm lg:bg-transparent bg-black/50 lg:w-auto w-full lg:py-0 py-4 sl-animation">
-                         <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">A propos de moi</a>
-                         <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Mes Prestations</a>
+                    <nav class="lg:flex hidden items-center text-green-100">
+                         <a href="#about" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">A propos de
+                              moi</a>
+                         <a href="#services" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Mes
+                              Prestations</a>
                          <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Tarifs</a>
-                         <a href="" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Contact-moi</a>
+                         <button @click="contact = !contact" class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Contact-moi</button>
                     </nav>
                     <button @click="sidebar = !sidebar" class="fill-green-100 lg:hidden flex items-center justify-center">
                          <svg class="sm:h-9 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -48,6 +85,18 @@
                                    d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
                          </svg>
                     </button>
+                    <nav :style="sidebar ? 'transform: perspective(300px) rotateX(0deg)' : 'transform: perspective(300px) rotateX(-18deg)'"
+                         :class="sidebar ? 'visible opacity-100' : 'invisible opacity-0 origin-top'"
+                         class="lg:hidden block absolute top-full left-0 lg:visible text-green-100 backdrop-blur-sm bg-black/50 w-full py-4 sl-animation" x-cloak>
+                         <a @click="sidebar = !sidebar" href="#about"
+                              class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">A propos de moi</a>
+                         <a @click="sidebar = !sidebar" href="#services"
+                              class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Mes Prestations</a>
+                         <a @click="sidebar = !sidebar" href=""
+                              class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Tarifs</a>
+                         <button @click="sidebar = !sidebar; contact = !contact" href=""
+                              class="block rounded-2xl tracking-widest ml-5 font-semibold lg:py-0.5 py-2 px-1 lg:hover:-translate-y-1.5 hover:text-blue-100 lg:hover:bg-white">Contact-moi</button>
+                    </nav>
                </div>
           </div>
      </header>
@@ -67,9 +116,9 @@
                          <a href="" class="text-green-100 bg-white hover:text-white hover:bg-green-100/80 md:py-3 xs:py-2 py-0.5 md:px-8 xs:px-6 px-3 rounded-full capitalize tracking-wider mb-4">Mes
                               prestations</a>
                          <span class="font-bitter font-bold sm:px-6 px-2 text-gray-100 mb-4">ou</span>
-                         <a href=""
+                         <button @click="contact = !contact"
                               class="text-green-100 bg-white hover:text-white hover:bg-green-100/80 md:py-3 xs:py-2 py-0.5 md:px-8 xs:px-6 px-3 rounded-full capitalize tracking-wider mb-4">Contact
-                              moi</a>
+                              moi</button>
                     </div>
                </div>
           </div>
@@ -77,7 +126,7 @@
      <!-- HERO -->
 
      <!-- PROPOSE -->
-     <section
+     <section id="about"
           class="relative lg:my-24 xs:my-16 my-9 xs:pt-10 pt-8 lg:pb-24 xs:pb-20 pb-12 bg-cover bg-center bg-no-repeat before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black/50 before:z-0"
           style="background-image: url(assets/img/tache_blanc.jpg);">
           <div class="relative sl-container z-10">
@@ -137,7 +186,7 @@
      <!-- PROJECT -->
 
      <!-- SERVICES -->
-     <section class="md:py-24 xs:py-20 py-12">
+     <section class="md:py-24 xs:py-20 py-12" id="services">
           <div class="sl-container">
                <h2
                     class="wow fadeIn relative text-center md:text-5xl xs:text-4xl text-3xl xs:pb-5 pb-3 mb-3 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 sm:after:w-1/6 after:w-1/3 after:h-0.5 after:bg-green-100">
@@ -193,7 +242,7 @@
      <!-- BANNER -->
 
      <!-- FOOTER -->
-     <footer class="wow fadeInUp md:mt-32 xs:mt-24 mt-14 md:mb-12 sm:mb-12">
+     <footer class="wow fadeInUp md:mt-32 xs:mt-24 mt-14 md:mb-12 sm:mb-12 text-center">
           <div class="sl-container">
                <div class="flex flex-wrap">
                     <div class="md:w-1/3 w-full xs:mb-9 mb-6">
@@ -215,7 +264,7 @@
                     </div>
                     <div class="md:w-1/3 w-full xs:mb-9 mb-6">
                          <h3 class="font-bitter md:mb-8 xs:mb-4 mb-2.5 text-green-100 xs:text-xl text-lg font-semibold">Suivez moi</h3>
-                         <div class="flex flex-wrap items-center gap-4">
+                         <div class="flex flex-wrap items-center justify-center gap-4">
                               <a href="" class="xs:w-11 w-8 xs:h-11 h-8 flex items-center justify-center border-2 border-green-100  rounded-full fill-green-100 hover:bg-green-100 hover:fill-white">
                                    <svg class="xs:h-6 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                         <path

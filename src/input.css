@@ -10,7 +10,7 @@
     @apply transition-all duration-300 ease-out;
   }
   .sl-animation-fade {
-    @apply transition-opacity duration-150 ease-linear;
+    @apply transition-opacity duration-700 ease-linear;
   }
 }
 
@@ -23,7 +23,7 @@
     @apply relative;
   }
 
-  em{
+  em {
     @apply text-green-100;
   }
 
@@ -71,4 +71,7 @@
 }
 
 @layer utilities {
+  html {
+    scroll-behavior: smooth;
+  }
 }
