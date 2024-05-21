@@ -27,7 +27,6 @@ module.exports = {
       'blue-100': '#23527c',
       'gray-100': '#7a7a7a',
       'ash-100': '#888888',
-      'orange-100': '#ebd2a7',
     }
   },
   plugins: [],
